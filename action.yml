@@ -1,0 +1,155 @@
+name: 'Zoho Cliq Message'
+author: 'Hurşit Yasin Pekşen (yasinpeksen)'
+description: 'Send message to given Zoho Cliq channel or bot.'
+
+inputs:
+  webhook:
+    description: |-
+      Webhook URL.
+      You can get this URL from Zoho Cliq with these steps:
+        - Right click the channel you want the message to be sent
+        - Click 'Channel Info'
+        - Select 'Connectors' from right top side
+        - Copy API Endpoint value
+      Example: 'https://cliq.zoho.com/api/v2/channelsbyname/obiwankenobichannel/message'
+    required: true
+
+  token:
+    description: |-
+      Zoho Cliq zapikey or user webhook token.
+      You can get API key from Zoho Cliq with these steps:
+        - Click the profile image on the top right
+        - Click 'Bots & Tools'
+        - From the left panel click 'Webhook Tokens' at the bottom
+        - Click 'Generate new token' button at the top right
+        - Click 'Copy' text under the 'Active Webhook Tokens'
+      Example: '1001.622cff111b2f13a55c30ee7128ce5349.f833f7134e7533ee9d31d3172f40c5a5'
+    required: true
+
+  sender-name:
+    description: |-
+      Custom sender name for the message.
+      If left blank the message will be sent by YOU.
+      Example: 'Kenobi Bot'
+    required: false
+
+  sender-image:
+    description: |-
+      Custom sender profile picture.
+      If left blank image is plain white.
+      Example: 'https://i.pinimg.com/280x280_RS/00/3e/6a/003e6a4fd33523893050086b6bbb0bf0.jpg'
+    required: false
+
+  thumbnail:
+    description: |-
+      Thumbnail picture.
+      Example: 'https://i.kym-cdn.com/entries/icons/original/000/029/079/hellothere.jpg'
+    required: false
+
+  title:
+    description: |-
+      Title of the message.
+      Example: 'Hello There'
+    required: false
+
+  text:
+    description: |-
+      Body of the message.
+      Example: 'General Kenobi...'
+    required: false
+
+  theme:
+    description: |-
+      Message theme style.
+      basic, poll, modern-inline, prompt
+      Defaults to 'modern-inline'
+      Example: 'modern-inline'
+    required: false
+    default: 'modern-inline'
+    type: choice
+    options:
+      - basic
+      - poll
+      - modern-inline
+      - prompt
+
+  slide-type:
+    description: |-
+      Type of custom slide.
+      label, list, table, images
+      Example: 'label'
+    required: false
+    type: choice
+    options:
+      - label
+      - list
+      - table
+      - images
+
+  slide-title:
+    description: |-
+      Title of custom slide.
+      Example: 'Kenobi Details'
+    required: false
+
+  slide-data:
+    description: |-
+      Data for the custom slide (Array).
+      Example for label type:
+        [
+          {
+            "Full Name": "Obi-wan Kenobi"
+          },
+          {
+            "Teacher": "Qui-Gon Jinn"
+          },
+          {
+            "Favorite Student": "Anakin Skywalker"
+          },
+          {
+            "It is over Anakin": "I have the high ground."
+          }
+        ]
+    required: false
+
+  custom-payload:
+    description: |-
+      Custom JSON payload to send. If this is set, ignores everything else and just sends this as JSON body.
+      You can create custom messages from this URL: 'https://cliq.zoho.com/messagebuilder'
+      Example:
+        {
+          "text": "Your Message",
+          "bot": {
+            "name": "Your Bot Name"
+          },
+          "card": {
+            "title": "Card Title",
+            "theme": "modern-inline"
+          },
+          "slides": [
+            {
+              "type": "label",
+              "title": "Title for your Label",
+              "data": [
+                {
+                  "Key 0": "Value 0"
+                },
+                {
+                  "Key 1": "Value 1"
+                }
+              ]
+            }
+          ]
+        }
+    required: false
+
+outputs:
+  message-json:
+    description: |-
+      JSON format of the message sent.
+      Example output:
+        {"text":"Your Message","bot":{"name":"Your Bot Name"},"card":{"title":"Card Title","theme":"modern-inline"},"slides":[{"type":"label","title":"Title for your Label","data":[{"Key 0":"Value 0"},{"Key 1":"Value 1"}]}]}
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
