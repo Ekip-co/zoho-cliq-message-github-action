@@ -16,8 +16,6 @@ try {
 	const slideData = getInput('slide-data');
 	const customPayload = getInput('custom-payload');
 
-	console.log(`Hello ${nameToGreet}!`);
-
 	let cliqMessage = {
 		text: text || '',
 		bot: {

@@ -4833,10 +4833,8 @@ try {
 	const slideData = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('slide-data');
 	const customPayload = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('custom-payload');
 
-	console.log(`Hello ${nameToGreet}!`);
-
 	let cliqMessage = {
-		text: text,
+		text: text || '',
 		bot: {
 			name: senderName || '',
 			image: senderImage || '',
@@ -4852,7 +4850,7 @@ try {
 		cliqMessage['slides'] = [
 			{
 				type: slideType,
-				title: slideTitle,
+				title: slideTitle || '',
 				data: JSON.parse(slideData),
 			},
 		];
