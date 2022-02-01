@@ -250,29 +250,29 @@ with:
   webhook: https://cliq.zoho.com/api/v2/channelsbyname/obiwankenobichannel/message
   token: Your Webhook Token Will Be Here
   custom-payload: |
-  {
-    "text": "Your Message",
-    "bot": {
-      "name": "Your Bot Name"
-    },
-    "card": {
-      "title": "Card Title",
-      "theme": "modern-inline"
-    },
-    "slides": [
-      {
-        "type": "label",
-        "title": "Title for your Label",
-        "data": [
-          {
-            "Key 0": "Value 0"
-          },
-          {
-            "Key 1": "Value 1"
-          }
-        ]
-      }
-    ]
-  }
+	  {
+	    "text": "Your Message",
+	    "bot": {
+	      "name": "Your Bot Name"
+	    },
+	    "card": {
+	      "title": "Card Title",
+	      "theme": "modern-inline"
+	    },
+	    "slides": [
+	      {
+		"type": "label",
+		"title": "Title for your Label",
+		"data": [
+		  {
+		    "Key 0": "Value 0"
+		  },
+		  {
+		    "Key 1": "Value 1"
+		  }
+		]
+	      }
+	    ]
+	  }
 ```
 
